@@ -8,9 +8,11 @@ const browserLocale = ref<string>('')
 const placeholder = ref<string>('Phone Number')
 
 onMounted(() => {
-  browserLocale.value = navigator.language || navigator.userLanguage
-  if (browserLocale.value === 'en-US') {
-    placeholder.value = '+1 (123) 456-7890'
+  if (typeof navigator !== 'undefined') {
+    browserLocale.value = navigator.language || navigator.userLanguage
+    if (browserLocale.value === 'en-US') {
+      placeholder.value = '+1 (123) 456-7890'
+    }
   }
 })
 </script>
